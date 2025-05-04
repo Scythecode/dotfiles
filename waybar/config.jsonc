@@ -1,115 +1,80 @@
 {
-  "layer": "top",
+  "layer": "bottom",
   "height": 34,
   "spacing": 1,
-  "modules-left": [
-    "hyprland/workspaces"
-  ],
-  "modules-center": [
-    "memory",
-    "cpu",
-    "temperature"
-  ],
-  "modules-right": [
-    "privacy",
-    "network",
-    "tray",
-    "wireplumber",
-    "clock"
-  ],
+  "modules-left": ["hyprland/workspaces"],
+  "modules-center": ["memory", "cpu"],
+  "modules-right": ["tray", "wireplumber", "network", "battery", "clock"],
   "clock": {
-    "format-alt": "<b>{:%I:%M:%S}</b>  ",
-    "format": "<b>{:%A, %B %d, %Y %I:%M:%S}</b> ",
-    "interval": 1
+    "format-alt": "󰥔 <b>{:%I:%M:%S}</b> ",
+    "format": "󰥔 <b>{:%A, %B %d, %Y %I:%M:%S}</b> ",
+    "interval": 1,
   },
-  "privacy": {
-    "icon-spacing": 4,
-    "icon-size": 16,
-    "transition-duration": 250,
-    "modules": [
-      {
-        "type": "screenshare",
-        "tooltip": true,
-        "tooltip-icon-size": 16
-      },
-      {
-        "type": "audio-in",
-        "tooltip": true,
-        "tooltip-icon-size": 16
-      }
-    ]
-  },
-  "temperature": {
-    "critical-threshold": 85,
-    "format-critical": " <b>{temperatureC}°C</b>",
-    "format": " <b>{temperatureC}°C</b>",
-    "interval": 5,
-    "thermal-zone": 1
-  },
+
   "tray": {
     "icon-size": 16,
-    "spacing": 8,
-    "show-passive-items": true
+    "spacing": 10,
+    "show-passive-items": true,
   },
   "cpu": {
     "format": " <b>{usage}%</b>",
     "interval": 1,
     "states": {
       "warning": 80,
-      "critical": 90
-    }
+      "critical": 90,
+    },
   },
+
+  "battery": {
+    "states": {
+      // "good": 95,
+      "warning": 15,
+      "critical": 5,
+    },
+    "format": "{capacity}% {icon}",
+    "format-full": "{capacity}% {icon}",
+    "format-charging": "{capacity}% 󰂄",
+    "format-plugged": "{capacity}% ",
+    "format-alt": "{time} {icon}",
+    // "format-good": "", // An empty format will hide the module
+    // "format-full": "",
+    "format-icons": ["󱃍", "󰁺", "󰁾", "󰂁", "󰁹"],
+  },
+  "battery#bat2": {
+    "bat": "BAT2",
+  },
+
+  "network": {
+    // "interface": "wlp2*", // (Optional) To force the use of this interface
+    "format-wifi": "󰖩 {essid} ({signalStrength}%) ",
+    "format-ethernet": "󰈁",
+    "tooltip-format": "󱚼 {ifname} via {gwaddr} ",
+    "format-linked": "{ifname} (No IP) ",
+    "format-disconnected": "󰖪 Disconnected ",
+    "format-alt": "{ifname}: {ipaddr}/{cidr}",
+    "on-click-right": "alacritty -e nmtui",
+  },
+
   "memory": {
     "format": " <b>{percentage}%</b>",
     "interval": 1,
     "states": {
       "warning": 80,
-      "critical": 90
-    }
+      "critical": 90,
+    },
   },
   "wireplumber": {
     "format": "{icon} <b>{volume}%</b>",
     "format-muted": "󰝟 <b>{volume}%</b>",
-    "on-click": "pamixer -t",
+    "on-click": "pavucontrol",
     "on-scroll-up": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+",
     "on-scroll-down": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%-",
     "max-volume": 100,
-    "format-icons": ["", "", ""]
+    "format-icons": ["", "", ""],
   },
-  "network": {
-    "interface": "enp6s0",
-    "format": "<b>{ifname}</b>",
-    "format-wifi": " <b>{essid}</b> ",
-    "format-ethernet": "󰈁  <b>{bandwidthDownBytes}</b>",
-    "format-disconnected": "<b>None</b>",
-    "tooltip-format": "{essid} 󰊗",
-    "tooltip-format-wifi": "{essid} ",
-    "tooltip-format-ethernet": "{ifname} ",
-    "tooltip-format-disconnected": "Disconnected",
-    "on-left-click": "nm-applet",
-    "interval": 1,
-    "max-length": 11
-  },
-  "mpris": {
-    "format": "{player_icon} ~~ <b>{title}</b> ~~ {artist}",
-    "format-paused": "{status_icon} ~~ <i>{title}</i> ~~ {artist}",
-    "format-tooltip": "{player}: {title} - {artist} {album}",
-    "max-length": 48,
-    "on-click-backward": "playerctl previous",
-    "on-right-click": "",
-    "on-click-forward": "playerctl next",
-    "on-scroll-up": "playerctl volume 0.05+",
-    "on-scroll-down": "playerctl volume 0.05-",
-    "player-icons": {
-      "default": "▶",
-      "mpv": "🎵"
-    },
-    "status-icons": {
-      "paused": "󰏤"
-    }
-  },
+
   "hyprland/workspaces": {
     "on-click": "activate",
-    "sort-by-number": true
-  }
+    "sort-by-number": true,
+  },
 }

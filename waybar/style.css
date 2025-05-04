@@ -11,15 +11,6 @@ window#waybar.hidden {
     opacity: 0.2;
 }
 
-window#waybar.termite {
-    background-color: #3F3F3F;
-}
-
-window#waybar.chromium {
-    background-color: #000000;
-    border: none;
-}
-
 button {
     box-shadow: inset 0 -3px transparent;
     border: none;
@@ -29,11 +20,6 @@ button {
 #button:hover {
     background: inherit;
     box-shadow: inset 0 -3px #ffffff;
-}
-
-/* you can set a style on hover for any module like this */
-#pulseaudio:hover {
-    background-color: #a37800;
 }
 
 #workspaces button {
@@ -65,19 +51,10 @@ button {
 #battery,
 #cpu,
 #memory,
-#disk,
-#temperature,
-#backlight,
 #network,
-#pulseaudio,
 #wireplumber,
-#custom-media,
-#tray,
-#mode,
-#idle_inhibitor,
-#scratchpad,
-#power-profiles-daemon,
-#mpd {
+#tray
+{
     padding: 0 10px;
     color: #eceff4;
 }
@@ -93,6 +70,11 @@ button {
 
 .modules-right > widget:last-child > #workspaces {
     margin-right: 0;
+}
+
+#network {
+  border-radius: 25px;
+  background-color: #2e3440;
 }
 
 #clock {
@@ -156,16 +138,6 @@ label:focus {
     background-color: #2e3440;
 }
 
-#temperature {
-    background-color: #2e3440;
-    border-radius: 25px;
-}
-
-#temperature.critical {
-    background-color: #2e3440;
-    border-radius: 25px;
-}
-
 #tray {
     background-color: #2e3440;
     border-radius: 25px;
@@ -182,26 +154,4 @@ label:focus {
 }
 
 
-#privacy {
-    padding: 0;
-}
 
-#privacy-item {
-    padding: 0 5px;
-    color: #eceff4;
-}
-
-#privacy-item.screenshare {
-    border-radius: 25px;	
-    background-color: #2e3440;
-}
-
-#privacy-item.audio-in {
-    border-radius: 25px;	
-    background-color: #2e3440;
-}
-
-#privacy-item.audio-out {
-    border-radius: 25px;	
-    background-color: #2e3440;
-}
